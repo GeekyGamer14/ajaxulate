@@ -16,7 +16,13 @@ Ajaxulate.search = function(i,c){
 	i = i || Ajaxulate.i;
 	document.getElementsByTagName('a').forEach(function(o){
 		Ajaxulate.i.forEach(function(i){
-			// todo if(o.getAttribute('data-ajaxulate').indexOf(i.url))	
+			if(o.getAttribute('data-ajaxulate').indexOf(i.url) !== -1 && i.absolute === false
+			|| o.getAttribute('data-ajaxulate') === i.url && i.absolute){
+				o.addEventListener('click', function(e){
+					e.preventDefault();
+					// todo add things
+				});
+			}	
 		});
 	});
 }
